@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+.font-playfair {
+  font-family: 'Dancing Script', cursive;
+
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
