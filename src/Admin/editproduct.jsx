@@ -205,12 +205,12 @@ const EditProduct = () => {
                 className="w-full border border-gray-300 rounded-md px-4 py-2 bg-white"
               />
               {product.image && (
-                <img
-                  src={
-                    image
-                      ? URL.createObjectURL(image)
-                      : `http://localhost:3000/uploads/${product.image}`
-                  }
+                 <img
+    src={
+      image
+        ? URL.createObjectURL(image)
+        : `${api.defaults.baseURL}/uploads/${product.image}`
+    }
                   alt="Product Preview"
                   className="w-24 h-24 object-cover mt-3 rounded-md border"
                 />

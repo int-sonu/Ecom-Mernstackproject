@@ -103,7 +103,7 @@ const CartPage = () => {
                 className="bg-white rounded-xl shadow-md p-6 flex flex-col md:flex-row items-center justify-between gap-6"
               >
                 <img
-                  src={`http://localhost:3000/uploads/${item.image}`}
+                  src={`${api.defaults.baseURL}/uploads/${item.image}`}
                   alt={item.product_name}
                   className="w-28 h-28 md:w-36 md:h-36 object-contain rounded"
                 />

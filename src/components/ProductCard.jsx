@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
       className="bg-white p-4 rounded-xl shadow hover:shadow-lg cursor-pointer transition-all duration-300"
     >
       <img
-        src={`http://localhost:3000/uploads/${product.image}`}
+        src={`${api.defaults.baseURL}/uploads/${product.image}`}
         alt={product.product_name}
         className="w-full h-30 object-contain mb-3 rounded-md"
       />

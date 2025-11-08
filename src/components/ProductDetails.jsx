@@ -58,7 +58,7 @@ const ProductDetails = () => {
         <div className="md:w-1/2 bg-gray-50 flex flex-col items-center justify-center p-6">
           <div className="border rounded-lg shadow-sm bg-white p-4">
             <img
-              src={`http://localhost:3000/uploads/${product.image}`}
+              src={`${api.defaults.baseURL}/uploads/${product.image}`}
               alt={product.product_name}
               className="w-72 h-72 object-contain"
             />

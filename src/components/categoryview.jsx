@@ -8,7 +8,7 @@ const CategoryList = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch("http://localhost:3000/categories");
+        const res = await api.get("/user/categories");
         const data = await res.json();
         setCategories(data);
       } catch (err) {

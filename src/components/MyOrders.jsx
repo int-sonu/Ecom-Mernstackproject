@@ -55,7 +55,7 @@ const MyOrders = () => {
                   <div key={item._id} className="flex items-center gap-4 border-b border-gray-200 pb-3">
                     {item.image && (
                       <img
-                        src={`http://localhost:3000/uploads/${item.image}`}
+                        src={`${api.defaults.baseURL}/uploads/${item.image}`}
                         alt={item.product_name}
                         className="w-24 h-24 object-cover rounded-lg border"
                       />

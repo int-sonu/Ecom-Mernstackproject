@@ -8,9 +8,7 @@ const ProductList = ({ searchQuery }) => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch("http://localhost:3000/products");
-      if (!response.ok) throw new Error("Failed to fetch products");
-      const data = await response.json();
+      const response = await api.get("/user/products");
       setProducts(data);
       setFilteredProducts(data); 
     } catch (error) {
@@ -49,7 +47,7 @@ const ProductList = ({ searchQuery }) => {
               className="border border-gray-300 rounded-lg p-4 text-center shadow hover:shadow-lg hover:cursor-pointer transition"
             >
               <img
-                src={`http://localhost:3000/uploads/${product.image}`}
+                src={`${api.defaults.baseURL}/uploads/${product.image}`}
                 alt={product.product_name}
                 className="w-full h-40 object-cover rounded-md mb-4"
               />

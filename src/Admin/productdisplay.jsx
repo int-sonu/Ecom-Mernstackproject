@@ -130,7 +130,7 @@ const ProductDisplay = () => {
                     <td className="px-6 py-3 text-center">
                       {product.image ? (
                         <img
-                          src={`http://localhost:3000/uploads/${product.image}`}
+                          src={`${api.defaults.baseURL}/uploads/${product.image}`}
                           alt={product.product_name}
                           className="w-16 h-16 object-cover mx-auto rounded border"
                         />
