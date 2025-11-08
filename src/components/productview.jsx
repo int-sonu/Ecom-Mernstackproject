@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../global/axios";
 
 const ProductList = ({ searchQuery }) => {
   const [products, setProducts] = useState([]);
