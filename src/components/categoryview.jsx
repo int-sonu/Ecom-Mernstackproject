@@ -9,7 +9,7 @@ const CategoryList = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await api.get("/user/categories");
+        const res = await api.get("/categories");
         const data = await res.json();
         setCategories(data);
       } catch (err) {

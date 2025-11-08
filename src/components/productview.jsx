@@ -9,7 +9,7 @@ const ProductList = ({ searchQuery }) => {
 
   const fetchProducts = async () => {
     try {
-      const response = await api.get("/user/products");
+      const response = await api.get("/products");
       setProducts(data);
       setFilteredProducts(data); 
     } catch (error) {
