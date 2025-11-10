@@ -35,7 +35,7 @@ const ProductDetails = () => {
     }
 
     try {
-      const res = await api.post(`/user/cart/${product._id}`, { quantity: 1 });
+      const res = await api.post(`/cart/${product._id}`, { quantity: 1 });
       console.log("Added to cart:", res.data);
       setCartCount((prev) => prev + 1);
       navigate("/cart");
