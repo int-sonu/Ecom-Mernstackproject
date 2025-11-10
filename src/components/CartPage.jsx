@@ -10,7 +10,8 @@ const CartPage = () => {
 
   const fetchCart = async () => {
     try {
-      const res = await api.get("/user/cart/id");
+      const res = await api.get("/cart/id");
+      console.log(res.data)
       setCart(res.data?.[0]?.items || []);
     } catch (error) {
       console.error("Error fetching cart:", error);
@@ -40,7 +41,7 @@ const CartPage = () => {
     }
 
     try {
-      await api.put(`/user/cart/${productId}`, { quantity: item.quantity + 1 });
+      await api.put(`/cart/${productId}`, { quantity: item.quantity + 1 });
       await fetchCart();
       adjustCartCount(1); 
     } catch (error) {
@@ -53,7 +54,7 @@ const CartPage = () => {
     if (!item || item.quantity <= 1) return;
 
     try {
-      await api.put(`/user/cart/${productId}`, { quantity: item.quantity - 1 });
+      await api.put(`/cart/${productId}`, { quantity: item.quantity - 1 });
       await fetchCart();
       adjustCartCount(-1); 
     } catch (error) {
@@ -64,7 +65,7 @@ const CartPage = () => {
   const handleRemove = async (productId) => {
     try {
       const item = cart.find((i) => i.Product === productId);
-      await api.delete(`/user/cart/${productId}`);
+      await api.delete(`/cart/${productId}`);
       await fetchCart(); 
       if (item) adjustCartCount(-item.quantity); 
     } catch (error) {

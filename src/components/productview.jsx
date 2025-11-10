@@ -10,8 +10,9 @@ const ProductList = ({ searchQuery }) => {
   const fetchProducts = async () => {
     try {
       const response = await api.get("/products");
-      setProducts(data);
-      setFilteredProducts(data); 
+      console.log(response.data);
+	setProducts(response.data);
+      setFilteredProducts(response.data); 
     } catch (error) {
       console.error("Error:", error);
     }
@@ -45,10 +46,10 @@ const ProductList = ({ searchQuery }) => {
             <div
               key={product._id}
               onClick={() => navigate(`/product/${product._id}`)}
-              className="border border-gray-300 rounded-lg p-4 text-center shadow hover:shadow-lg hover:cursor-pointer transition"
-            >
-              <img
-                src={`${api.defaults.baseURL}/uploads/${product.image}`}
+             className="px-4 py-2 bg-yellow-500 text-white font-medium rounded-md hover:bg-yellow-600 transition-all duration-300 shadow-sm min-w-[100px]"
+
+             <img
+               src={`${api.defaults.baseURL}/api/uploads/${product.image}
                 alt={product.product_name}
                 className="w-full h-40 object-cover rounded-md mb-4"
               />
