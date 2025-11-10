@@ -10,8 +10,9 @@ const ProductList = ({ searchQuery }) => {
   const fetchProducts = async () => {
     try {
       const response = await api.get("/products");
+      console.log(response.data);
       setProducts(response.data);
-      setFilteredProducts(data); 
+      setFilteredProducts(response.data);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -29,7 +30,8 @@ const ProductList = ({ searchQuery }) => {
       const filtered = products.filter(
         (product) =>
           product.product_name.toLowerCase().includes(query) ||
-          (product.description && product.description.toLowerCase().includes(query))
+          (product.description &&
+            product.description.toLowerCase().includes(query))
       );
       setFilteredProducts(filtered);
     }
@@ -45,7 +47,7 @@ const ProductList = ({ searchQuery }) => {
             <div
               key={product._id}
               onClick={() => navigate(`/product/${product._id}`)}
-              className="border border-gray-300 rounded-lg p-4 text-center shadow hover:shadow-lg hover:cursor-pointer transition"
+              className="px-4 py-2 bg-yellow-500 text-white font-medium rounded-md hover:bg-yellow-600 transition-all duration-300 shadow-sm min-w-[100px]"
             >
               <img
                 src={`${api.defaults.baseURL}/uploads/${product.image}`}

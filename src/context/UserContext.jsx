@@ -27,7 +27,7 @@ export const UserProvider = ({ children }) => {
 
   const fetchUser = async () => {
     try {
-      const res = await api.get("/user/profile", { withCredentials: true });
+      const res = await api.get("/profile", { withCredentials: true });
       if (res.data?.user) {
         const fetchedUser = res.data.user;
         setUser(fetchedUser);
@@ -45,6 +45,7 @@ export const UserProvider = ({ children }) => {
     if (!isLoggedIn) return;
     try {
       const res = await api.get("/user/cart", { withCredentials: true });
+      console.log(res.data)
       const items = res.data?.[0]?.items || [];
       const totalQty = items.reduce((sum, item) => sum + item.quantity, 0);
       setCartCount(totalQty);
@@ -104,7 +105,7 @@ export const UserProvider = ({ children }) => {
 
   const updateUserProfile = async (updatedData) => {
     try {
-      const res = await api.put("/user/profile", updatedData, {
+      const res = await api.put("/profile", updatedData, {
         withCredentials: true,
       });
 

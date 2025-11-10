@@ -11,7 +11,8 @@ const CategoryList = () => {
       try {
         const res = await api.get("/categories");
         const data = await res.json();
-        setCategories(data);
+	console.log(data.data);
+        setCategories(data.data);
       } catch (err) {
         console.error(err);
       }

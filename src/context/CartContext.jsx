@@ -9,7 +9,7 @@ export const CartProvider = ({ children }) => {
 
   const fetchCart = async () => {
     try {
-      const res = await api.get("/user/cart/id");
+      const res = await api.get("/cart/id");
       const items = res.data[0]?.items || [];
       setCart(items);
       const totalQty = items.reduce((sum, item) => sum + item.quantity, 0);
@@ -42,7 +42,7 @@ export const CartProvider = ({ children }) => {
         }
       }
 
-      const res = await api.post("/user/cart/add", { productId, quantity: 1 });
+      const res = await api.post("/cart/add", { productId, quantity: 1 });
       const updatedCart = res.data.cart?.items || [];
       setCart(updatedCart);
 
