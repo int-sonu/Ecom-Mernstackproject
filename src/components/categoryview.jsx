@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../global/axios";
@@ -10,11 +11,10 @@ const CategoryList = () => {
     const fetchCategories = async () => {
       try {
         const res = await api.get("/categories");
-        const data = await res.json();
-	console.log(data.data);
-        setCategories(data.data);
+        console.log(res.data);
+        setCategories(res.data || []);
       } catch (err) {
-        console.error(err);
+        console.error("Error fetching categories:", err);
       }
     };
     fetchCategories();
@@ -27,14 +27,14 @@ const CategoryList = () => {
     <div className="flex justify-center">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
         {categories.map((cat) => (
-         <div
-  key={cat._id}
-  onClick={() => navigate(`/category/${cat._id}`)}
-  className="bg-white shadow-md rounded-2xl p-6 hover:shadow-lg text-center cursor-pointer transition-transform hover:scale-105"
->
-  <h3 className="text-xl font-semibold mb-2">{cat.categoryname}</h3>
-  <p className="text-gray-600">{cat.categorydescription}</p>
-</div>
+          <div
+            key={cat._id}
+            onClick={() => navigate(`/category/${cat._id}`)}
+            className="bg-white shadow-md rounded-2xl p-6 hover:shadow-lg text-center cursor-pointer transition-transform hover:scale-105"
+          >
+            <h3 className="text-xl font-semibold mb-2">{cat.categoryname}</h3>
+            <p className="text-gray-600">{cat.categorydescription}</p>
+          </div>
         ))}
       </div>
     </div>

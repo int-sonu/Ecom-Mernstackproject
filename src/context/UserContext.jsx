@@ -44,7 +44,7 @@ export const UserProvider = ({ children }) => {
   const fetchCartCount = async () => {
     if (!isLoggedIn) return;
     try {
-      const res = await api.get("/user/cart", { withCredentials: true });
+      const res = await api.get("user/cart", { withCredentials: true });
       console.log(res.data)
       const items = res.data?.[0]?.items || [];
       const totalQty = items.reduce((sum, item) => sum + item.quantity, 0);

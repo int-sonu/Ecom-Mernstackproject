@@ -10,7 +10,7 @@ const CartPage = () => {
 
   const fetchCart = async () => {
     try {
-      const res = await api.get("/cart/id");
+      const res = await api.get("user/cart");
       console.log(res.data)
       setCart(res.data?.[0]?.items || []);
     } catch (error) {
@@ -41,7 +41,7 @@ const CartPage = () => {
     }
 
     try {
-      await api.put(`/cart/${productId}`, { quantity: item.quantity + 1 });
+      await api.put(`user/cart/${productId}`, { quantity: item.quantity + 1 });
       await fetchCart();
       adjustCartCount(1); 
     } catch (error) {
@@ -54,7 +54,7 @@ const CartPage = () => {
     if (!item || item.quantity <= 1) return;
 
     try {
-      await api.put(`/cart/${productId}`, { quantity: item.quantity - 1 });
+      await api.put(`user/cart/${productId}`, { quantity: item.quantity - 1 });
       await fetchCart();
       adjustCartCount(-1); 
     } catch (error) {
@@ -196,5 +196,4 @@ const CartPage = () => {
     </div>
   );
 };
-
 export default CartPage;

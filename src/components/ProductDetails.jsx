@@ -36,19 +36,18 @@ const ProductDetails = () => {
     }
 
     try {
-      const res = await api.post(`/user/cart/${product._id}`, { quantity: 1 });
+              const res = await api.post(`user/cart/${product._id}`, { quantity: 1 });
       console.log("Added to cart:", res.data);
       setCartCount((prev) => prev + 1);
       navigate("/cart");
     } catch (error) {
-      console.error("Error adding to cart:", error);
-    }
-  };
-
+      console.log("Error adding to cart:", error);
+    }  };
+console.log('Hi')
   const handleNotifyMe = () => {
     if (!isLoggedIn) {
       navigate("/login");
-      return;
+     return;
     }
     alert("You will be notified when this product is back in stock!");
   };
